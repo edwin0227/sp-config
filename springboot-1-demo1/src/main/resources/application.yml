@@ -1,0 +1,43 @@
+server:
+  port: 8090
+  servlet:
+      context-path: /
+      
+  #为jdbc属性赋值，交给spring容器管理
+#jdbc:
+ # driver: 链接mysql
+  #name: root用户名
+  #password: tarena密码
+  
+#语法 使用"---"进行环境分割
+
+#程序启动时 指定环境进行加载
+spring:
+  profiles:
+    active: test  
+---    #表示环境的分割，第一个环境dev
+spring:
+  profiles: dev  #为该环境指定一个名称 
+    
+server:
+  port: 81
+  servlet:
+    context-path: /
+
+---
+spring:
+  profiles: test  #为该环境指定一个名称 
+    #tomcat具体配置信息
+server:
+  port: 80
+  servlet:
+    context-path: /test
+
+---
+spring:
+  profiles: prod  #为该环境指定一个名称 
+server:
+  port: 90
+  servlet:
+    context-path: /prod
+  
